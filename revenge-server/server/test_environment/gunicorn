@@ -1,0 +1,24 @@
+#!/bin/bash
+
+NAME="REVENGE"
+DJANGODIR="/home/simba/github/revenge_deploy/revenge_server"
+VIRTUALENV_BIN="/home/simba/github/revenge_deploy_env3/bin"
+USER=simba
+GROUP=simba
+NUM_WORKERS=4
+HOST=127.0.0.1
+PORT=9999
+
+cd $DJANGODIR/revenge
+
+source $VIRTUALENV_BIN/activate
+exec $VIRTUALENV_BIN/gunicorn \
+	--name $NAME \
+	--workers $NUM_WORKERS \
+	--worker-class=gevent \
+	--user=$USER \
+	--group=$GROUP \
+	--bind=$HOST:$PORT \
+	--timeout=600 \
+	revenge.wsgi:application
+

@@ -1,0 +1,66 @@
+1. 执行apt-get.sh,安装依赖的包, 配置主机环境
+    sudo ./apt-get.sh
+
+2. 生成虚拟环境
+    cd virtualenv/
+    virtualenv env3
+    cd -
+    source ./virtualenv/env3/bin/activate
+    (注意: 两个点之间有空格)
+
+3. 安装所需的模块和插件
+    cd revenge/
+    pip install -r requirements.txt
+
+4. 配置系统邮箱config.py
+    cd revenge/tool/email/
+    cp config.py.example config.py
+    然后,根据实际情况配置系统邮箱config.py
+
+5. 初始化数据库
+    在开发环境:
+    cd revenge/
+    python3 manage.py migrate
+
+    在生产环境:
+    mysql -uusername -ppassword
+    create database revenge character set utf8;
+    quit
+    cd revenge/
+    python3 manage.py migrate
+
+6. 运行
+    cd revenge/
+    ./run_develop.sh
+    ./run_develop_worker.sh
+    ./run_develop_beat.sh
+
+
+9.配置supervisor
+  $cd /etc/supervisor/conf.d
+  将配置文件放入
+  $sudo cp /home/simba/github/revenge_deploy/revenge_server/server/product_environment/supervisor/revenge.conf /etc/supervisor/conf.d/
+  启动应用
+  $sudo supervisorctl
+  > reload
+  > start revenge
+
+
+11. 配置文件字段解析
+  gunicorn
+  NAME: 服务名
+  DJANGODIR: django的manage.py所在目录(dir)
+  USER: 运行该服务的账户
+  GROUP: 运行该服务的账户所在组
+  注意wsgi.py文件所在目录, exec命令需要配置
+
+  supervisor.conf
+  program: 服务名, 即用supervisorctl启动时的名字
+  command: gunicorn绝对路径
+  directory: gunicorn所在目录
+  user: 执行gunicorn的账户
+
+  ServerName: 域名, 浏览器访问
+  ProxyPass,ProxyPassReverse: 端口
+  如果static直接访问,需要配置django的static目录绝对路径
+

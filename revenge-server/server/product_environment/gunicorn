@@ -1,0 +1,22 @@
+#!/bin/bash
+
+NAME="REVENGE"
+DJANGODIR="/home/jovyan/work/revenge_server"
+USER=jovyan
+GROUP=jovyan
+NUM_WORKERS=4
+HOST=0.0.0.0
+PORT=9999
+
+cd $DJANGODIR/revenge
+
+exec /usr/local/bin/gunicorn \
+	--name $NAME \
+	--workers $NUM_WORKERS \
+	--worker-class=gevent \
+	--user=$USER \
+	--group=$GROUP \
+	--bind=$HOST:$PORT \
+	--timeout=600 \
+	revenge.wsgi:application
+

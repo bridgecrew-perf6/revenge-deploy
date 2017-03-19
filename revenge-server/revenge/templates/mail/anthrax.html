@@ -1,0 +1,9 @@
+{% extends "mail_base.html" %}
+
+{% block content_text %}
+    提交了绑定邮箱请求。请点击以下链接绑定您的邮箱：
+    <br>
+    若您无法直接点击链接，也可以直接复制以下地址到地址栏中：
+    <br>
+    {{ token }}
+{% endblock %}
