@@ -5,6 +5,6 @@
 TORNADO_DIR="/home/jovyan/work/revenge_server/revenge"
 
 #启动程序
-exec python3 $TORNADO_DIR/manage.py celery worker -l info
+exec python3 $TORNADO_DIR/manage.py celery worker --beat -l info
 
 

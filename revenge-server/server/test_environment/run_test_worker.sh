@@ -9,6 +9,6 @@ VIRTUALENV_BIN="/home/simba/github/revenge_deploy_env3/bin"
 source  $VIRTUALENV_BIN/activate
 
 #启动程序
-exec python3 $TORNADO_DIR/manage.py celery worker -l info
+exec python3 $TORNADO_DIR/manage.py celery worker --beat -l info
 
 
