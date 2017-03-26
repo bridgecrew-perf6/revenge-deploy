@@ -33,7 +33,6 @@
     cd revenge/
     ./run_develop.sh
     ./run_develop_worker.sh
-    ./run_develop_beat.sh
 
 
 9.配置supervisor

@@ -22,7 +22,7 @@ def bombTaskTime():
     fn = slug(family_name(), style=NORMAL, separator='')
     gn = slug(given_name(), style=NORMAL, separator='')
     email_suffix = ""
-    passport = '.'.join([gn, fn, email_suffix])
+    passport = '.'.join([gn, fn]) + email_suffix
     print("发送给:",passport)
     token = Token().generate_md5_token_from_string(passport)
     bind_timestamp = timezone.now()
