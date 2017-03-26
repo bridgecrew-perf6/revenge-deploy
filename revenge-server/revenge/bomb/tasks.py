@@ -4,9 +4,11 @@ from celery import shared_task
 from celery import task
 from pypinyin import slug, NORMAL
 from tool.email.send_email import KQEmail
-from tool.generate_name import family_name, given_name
+from tool.general.generate_name import family_name, given_name
 from tool.general.token import Token
-from django.utils import timezone
+import time
+import random
+
 
 
 @task()

@@ -5,7 +5,7 @@ gevent==1.1.1
 celery==3.1.24
 django-celery==3.1.17
 django-celery-email==1.1.5
-pypinyin=0.17.0
+pypinyin==0.17.0
 
 
 

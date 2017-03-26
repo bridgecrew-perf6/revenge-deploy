@@ -14,7 +14,7 @@ class KQEmail:
         kq_email = EmailMultiAlternatives(subject=self.__subject,
                                           body=body,
                                           from_email=None,
-                                          to=[self.__receiver])
+                                          to=self.__receiver)
         kq_email.content_subtype = "html"
         kq_email.send(self.__fail_silently)
 
