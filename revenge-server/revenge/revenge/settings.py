@@ -153,7 +153,6 @@ djcelery.setup_loader()
 CELERY_TIMEZONE = TIME_ZONE
 BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 CELERY_RESULT_BACKEND = 'rpc://'
-BROKER_CONNECTION_RETRY = False
 
 CELERYBEAT_SCHEDULE = {
     'bombTaskTime':{
